@@ -1,0 +1,64 @@
+namespace task_search4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //program that reads a list of integers from the user and throws an exception if any numbers are duplicates.
+            try
+            {
+                Console.WriteLine("Enter integers separated by spaces:");
+                string input = Console.ReadLine();
+                string[] parts = input.Split(' ');
+                HashSet<int> numbers = new HashSet<int>();
+
+                foreach (string part in parts)
+                {
+                    int number = int.Parse(part);
+                    if (!numbers.Add(number))
+                    {
+                        throw new Exception($"Duplicate number found: {number}");
+                    }
+                }
+
+                Console.WriteLine("All numbers are unique.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            //program to create a method that takes a string as input and throws an exception if the string does not contain vowels.
+            try
+            {
+                Console.WriteLine("Enter a string:");
+                string input = Console.ReadLine();
+                CheckForVowels(input);
+                Console.WriteLine("The string contains vowels.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+        }
+
+        static void CheckForVowels(string input)
+        {
+            string vowels = "aeiouAEIOU";
+
+            foreach (char c in input)
+            {
+                if (vowels.Contains(c))
+                {
+                    return; // Found a vowel
+                }
+            }
+
+            throw new Exception("The string does not contain any vowels.");
+        }
+    }
+}
+
+    
+
+    
+
